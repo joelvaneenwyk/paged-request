@@ -25,6 +25,9 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.20.0",
+    "@types/axios": "^0.9.36",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.13.4",
     "eslint": "^9.20.1",
     "globals": "^15.15.0",
     "gulp-format-md": "github:joelvaneenwyk/gulp-format-md",
