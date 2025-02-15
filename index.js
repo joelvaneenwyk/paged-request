@@ -10,13 +10,27 @@ const axios = require('axios').default;
  * @typedef {(url: string, response: import('axios').AxiosResponse, accumulator: Accumulator) => Promise<string|null>} Next
  * @typedef {Partial<import('axios').AxiosRequestConfig>} RequestOptions
  * @typedef {RequestOptions | Next} ConfigOrNext
- *
- * @typedef {Object} Accumulator
- * @property {string} orig - Original URL
- * @property {any} options - Request options
- * @property {any[]} pages - Accumulated pages
- * @property {string[]} urls - Accumulated URLs
  */
+
+/**
+ * Accumulated response data.
+ * 
+ * @api public
+ */
+class Accumulator {
+  /**
+   * @param {string} orig - Original URL
+   * @param {RequestOptions?} options - Request options
+   */
+  constructor(orig, options) {
+    this.orig = orig;
+    this.options = options;
+    /** @type {import('axios').AxiosResponse[]} */
+    this.pages = [];
+    /** @type {string[]} */
+    this.urls = [];
+  }
+}
 
 /**
  * Makes paginated requests to the specified URL.
@@ -47,8 +61,9 @@ module.exports = async function(url, options, next = null) {
 
   const opts = Object.assign({}, in_options);
 
-  /** @type {Accumulator} */
-  const acc = { orig: url, options, pages: [], urls: [] };
+  const acc = new Accumulator(url, in_options);
+
+  /** @type {import('axios').AxiosResponse} */
   let res;
 
   /** @type {string | null} */
