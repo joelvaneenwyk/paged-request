@@ -12,7 +12,7 @@ const request = require('./');
  * Get the next URL.
  *
  * @param {number} limit
- * @returns {function(string, {data: string}, {orig: string, urls: string[]}): Promise<string|undefined>}
+ * @returns {function(string, {data: string}, {orig: string, urls: string[]}): Promise<string|null>}
  */
 function next(limit) {
   return async function(_url, res, acc) {
@@ -36,7 +36,7 @@ function next(limit) {
       }
       return url;
     } while (true);
-    return undefined;
+    return null;
   };
 }
 
