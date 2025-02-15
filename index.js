@@ -4,11 +4,11 @@
  * @module paged-request
  */
 
-const axios = require('axios');
+const axios = require('axios').default;
 
 /**
- * @typedef {(url: string, response: Axios.AxiosXHR<any>, accumulator: Accumulator) => Promise<string|null>} Next
- * @typedef {Partial<Axios.AxiosXHRConfig<any>>} RequestOptions
+ * @typedef {(url: string, response: import('axios').AxiosResponse, accumulator: Accumulator) => Promise<string|null>} Next
+ * @typedef {Partial<import('axios').AxiosRequestConfig>} RequestOptions
  * @typedef {RequestOptions | Next} ConfigOrNext
  *
  * @typedef {Object} Accumulator
