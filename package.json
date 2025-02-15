@@ -17,14 +17,20 @@
     "node": ">=8"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "lint": "eslint ."
   },
   "dependencies": {
     "axios": "^1.7.9"
   },
   "devDependencies": {
+    "@eslint/js": "^9.20.0",
+    "eslint": "^9.20.1",
+    "globals": "^15.15.0",
     "gulp-format-md": "github:joelvaneenwyk/gulp-format-md",
-    "mocha": "^11.1.0"
+    "mocha": "^11.1.0",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.24.0"
   },
   "keywords": [
     "get",
