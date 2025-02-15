@@ -19,7 +19,11 @@
   "scripts": {
     "test": "mocha"
   },
+  "dependencies": {
+    "axios": "^1.7.9"
+  },
   "devDependencies": {
+    "gulp-format-md": "github:joelvaneenwyk/gulp-format-md",
     "mocha": "^11.1.0"
   },
   "keywords": [
@@ -51,8 +55,5 @@
       "axios",
       "needle"
     ]
-  },
-  "dependencies": {
-    "axios": "^1.7.9"
   }
 }
