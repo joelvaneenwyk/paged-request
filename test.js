@@ -1,14 +1,24 @@
-'use strict';
+/**
+ * Tests for `paged-request` module.
+ *
+ * @module test
+ */
 
 require('mocha');
 const assert = require('assert');
 const request = require('./');
 
+/**
+ * Get the next URL.
+ *
+ * @param {number} limit
+ * @returns {function(string, {data: string}, {orig: string, urls: string[]}): Promise<string|undefined>}
+ */
 function next(limit) {
-  return async function(url, res, acc) {
+  return async function(_url, res, acc) {
     const regex = /href=[^\s]*?\/page\/(\d+)\//g;
-    let matches;
-    while (matches = regex.exec(res.data)) {
+    do {
+      let matches = regex.exec(res.data);
       if (matches === null) {
         break;
       }
@@ -25,7 +35,8 @@ function next(limit) {
         break;
       }
       return url;
-    }
+    } while (true);
+    return undefined;
   };
 }
 
