@@ -7,8 +7,9 @@
 const axios = require('axios');
 
 /**
- * @typedef {(url: string, response: Axios.AxiosXHR<any>, accumulator: Accumulator) => Promise<string|null>} NextUrlFunction
- * @typedef {Axios.AxiosXHRConfig<any> | NextUrlFunction} ConfigOrNext
+ * @typedef {(url: string, response: Axios.AxiosXHR<any>, accumulator: Accumulator) => Promise<string|null>} Next
+ * @typedef {Partial<Axios.AxiosXHRConfig<any>>} RequestOptions
+ * @typedef {RequestOptions | Next} ConfigOrNext
  *
  * @typedef {Object} Accumulator
  * @property {string} orig - Original URL
@@ -22,17 +23,17 @@ const axios = require('axios');
  *
  * @param {any | null} url - The initial URL to request
  * @param {ConfigOrNext} options - Axios request configuration
- * @param {ConfigOrNext | undefined} next - Function to get the next URL
+ * @param {Next?} next - Function to get the next URL
  * @returns {Promise<Accumulator>} Accumulated response data
  */
-module.exports = async function(url, options, next) {
+module.exports = async function(url, options, next = null) {
   if (typeof url !== 'string') {
     return Promise.reject(new TypeError('expected "url" to be a string'));
   }
 
-  /** @type {Axios.AxiosXHRConfig<any> | null} */
+  /** @type {RequestOptions?} */
   let in_options = null;
-  /** @type {NextUrlFunction | null} */
+  /** @type {Next | null} */
   let in_next = null;
 
   if (typeof options === 'function') {
