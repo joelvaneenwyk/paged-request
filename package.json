@@ -20,8 +20,7 @@
     "test": "mocha"
   },
   "devDependencies": {
-    "gulp-format-md": "^1.0.0",
-    "mocha": "^5.2.0"
+    "mocha": "^11.1.0"
   },
   "keywords": [
     "get",
@@ -54,6 +53,6 @@
     ]
   },
   "dependencies": {
-    "axios": "^0.21.1"
+    "axios": "^1.7.9"
   }
 }
