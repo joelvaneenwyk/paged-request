@@ -28,7 +28,7 @@
     "@types/mocha": "^10.0.10",
     "@types/node": "^22.13.4",
     "eslint": "^9.20.1",
-    "globals": "^15.15.0",
+    "globals": "^16.0.0",
     "gulp-format-md": "github:joelvaneenwyk/gulp-format-md",
     "mocha": "^11.1.0",
     "typescript": "^5.7.3",
